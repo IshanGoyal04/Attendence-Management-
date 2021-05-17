@@ -159,7 +159,7 @@ module.exports.renderCheckout = async (req, res) => {
 }
 
 module.exports.markCheckout = async (req, res) => {
-    // the attendance than can be checked out must be last entry in the attendance array
+
     try {
         const user = await User.findOne({ _id: req.params.id });
 

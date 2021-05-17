@@ -40,14 +40,7 @@ const insertRecord = async function (req, res) {
         req.flash('error', e.message)
         res.redirect('admins/list')
     }
-    //user.save((err, doc) => {
-    //    if (!err) {
-    //        req.flash('success', 'Successfully Registered');
-    //        res.redirect('admins/list')
-    //    } else {
-    //        console.log(`Error during insert ${err}`)
-    //    }
-    //})
+
 }
 
 
@@ -66,15 +59,7 @@ router.get('/:id', isLoggedIn, async (req, res) => {
         return res.redirect('admins/list');
     }
     res.render('admin/edit', { user });
-    //const user = User.findById(req.params.id, (err, doc) => {
-    //    if (!err) {
-    //        res.render('admin/edit', {
-    //            viewTitle: "Update Employee",
-    //            user
-    //        });
-    //        console.log(doc);
-    //    }
-    //})
+
 })
 
 router.post('/:id', isLoggedIn, (req, res) => {
@@ -179,11 +164,11 @@ router.put('/:id/approved/:ID', async (req, res) => {
     for (let attendance of attendences) {
         if (attendance._id.equals(ID)) {
             attendance.status = "Approved";
-            console.log(attendance)
+
             await user.save()
             break;
         }
-    } console.log(user)
+    }
     res.redirect(`/admins/${id}/employees/${id}`)
 })
 
@@ -195,11 +180,11 @@ router.put('/:id/rejected/:ID', async (req, res) => {
     for (let attendance of attendences) {
         if (attendance._id.equals(ID)) {
             attendance.status = "Rejected";
-            console.log(attendance)
+
             await user.save()
             break;
         }
-    } console.log(user)
+    }
     res.redirect(`/admins/${id}/employees/${id}`)
 })
 
