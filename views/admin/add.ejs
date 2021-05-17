@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <style>
+        .background {
+
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url(https://images.unsplash.com/photo-1596495868755-0e705ed41be4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHN0dWRlbnRzJTIwc2l0dGluZyUyMGluJTIwY2xhc3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+            background-size: cover;
+            background-position: center;
+            box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+
+
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column vh-100">
+    <div class="background">
+        <div class="container d-flex justify-content-center align-items-center mt-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                    <div class="card shadow mb-3">
+                        <div class="card-body ">
+                            <h5 class="card-title">Add New Employee</h5>
+                            <form action="/admins" method="POST" class="validated-form" novalidate>
+                                <div class="mb-3">
+                                    <!--used to provide margin botton of 3 to username block-->
+                                    <label class="form-label" for="username">Username</label>
+                                    <input class="form-control" type="text" id="username" name="username" autofocus
+                                        required>
+                                    <div class="valid-feedback">Looks Good</div>
+                                </div>
+                                <div class="mb-3">
+                                    <!--used to provide margin botton of 3 to email block-->
+                                    <label class="form-label" for="eid">Eid</label>
+                                    <input class="form-control" type="number" min='0' id="eid" name="eid" required>
+                                    <div class="valid-feedback">Looks Good</div>
+                                </div>
+                                <div class="mb-3">
+                                    <!--used to provide margin botton of 3 to email block-->
+                                    <label class="form-label" for="email">Email</label>
+                                    <input class="form-control" type="email" id="email" name="email" required>
+                                    <div class="valid-feedback">Looks Good</div>
+                                </div>
+                                <div class="mb-3">
+                                    <!-- used to provide margin botton of 3 to password block-->
+                                    <label class="form-label" for="contactnum">Contact Number</label>
+                                    <input class="form-control" type="number" id="contactnum" name="contactNumber"
+                                        min="0000000000" max="9999999999" required>
+                                    <div class="valid-feedback">Looks Good</div>
+                                </div>
+                                <div class="mb-3">
+                                    <!-- used to provide margin botton of 3 to password block-->
+                                    <label class="form-label" for="designation">Designation</label>
+                                    <input class="form-control" type="text" id="designation" name="designation"
+                                        required>
+                                    <div class="valid-feedback">Looks Good</div>
+                                </div>
+                                <div class="mb-3">
+                                    <!--used to provide margin botton of 3 to password block-->
+                                    <label class="form-label" for="address">Street Address</label>
+                                    <input class="form-control" type="text" id="address" name="address" required>
+                                    <div class="valid-feedback">Looks Good</div>
+                                </div>
+                                <div class="mb-3">
+                                    <!--used to provide margin botton of 3 to password block-->
+                                    <label class="form-label" for="city">City</label>
+                                    <input class="form-control" type="text" id="city" name="city" required>
+                                    <div class="valid-feedback">Looks Good</div>
+                                </div>
+                                <div class="mb-3">
+                                    <!--used to provide margin botton of 3 to password block-->
+                                    <label class="form-label" for="password">Password</label>
+                                    <input class="form-control" type="password" id="password" name="password" required>
+                                    <div class="valid-feedback">Looks Good</div>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-success btn-block">Register</button>
+                                    <a class="btn btn-secondary btn-block" href="/admins/list">View All</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-dark py-3 mt-auto ">
+        <!--mt-auto adjusts footer position in the bottom according to box height-->
+        <div class="container text-center">
+            <span class="text-light ">&copy;Bigstep</span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src="/javascripts/validateForm.js"></script>
+    <!--We have added this script as it contains logic for validate form -->
+</body>
+
+</html>

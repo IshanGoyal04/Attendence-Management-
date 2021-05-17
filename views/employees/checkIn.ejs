@@ -1,0 +1,252 @@
+<% layout('layouts/mainpage') %>
+
+
+    <% if(currentUser && user.designation==="Admin" ) {%>
+        <div class="conatiner mb-3">
+
+            <div style="text-align:right; width:100%; padding:0;">
+
+                <a href="/admins/list">
+                    <button class="btn btn-success" type="button">Manage
+                        Employees</button></a>
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+
+
+                <div class='col-sm-4'>
+
+                    <div> <strong class='lead' style="color:rgb(224, 224, 233)"> Hello, <%=user.username.toUpperCase()%>
+                        </strong></div>
+                    <br>
+
+                    <br>
+                    <br>
+                    <%if(user.isPresent===100){%>
+                        <div>
+                            <form class='' action='/employees/<%=user.id%>/attendence' method='POST'>
+                                <button class='btn btn-success' type="submit">
+                                    Check IN</button>
+                            </form>
+                        </div>
+                        <br>
+                        <div>
+                            <form class='' action='/employees/<%=user.id%>/onleave' method='POST'>
+                                <button class='btn btn-danger' type="submit">On leave</button>
+                            </form>
+                        </div>
+                        <br>
+
+                        <% }else{ %>
+                            <div>
+
+                                <form class='' action='/employees/<%=user.id%>/checkOut' method='POST'>
+                                    <button class='btn btn-warning' type="submit">Check OUT</button>
+                                </form>
+                            </div>
+                            <br>
+                            <% } %>
+
+
+                </div>
+
+                <div class='col-sm-8'>
+                    <div class='row text-center'>
+                        <p style="color:rgb(224, 224, 233)"><b>Today's working hours :<%=time%> Hours</b></p>
+
+                        <table class='table table-bordered table-hover table-striped table-responsive '
+                            style="background-color: #fafcfd;">
+                            <thead>
+                                <th>Date</th>
+                                <th>Entry time</th>
+                                <th>Exit time</th>
+                                <th>On Leave</th>
+
+
+                            </thead>
+                            <tbody>
+                                <%user.attendance.forEach(a=>{%>
+                                    <tr>
+                                        <%if(!a.onleave){%>
+                                            <td>
+                                                <%=a.date.toDateString()%>
+                                            </td>
+
+                                            <td>
+                                                <%=a.entry.toLocaleTimeString()%>
+                                            </td>
+
+                                            <td>
+                                                <%if(a.exit.time){%>
+                                                    <%=a.exit.time.toLocaleTimeString()%>
+                                                        <%}%>
+                                            </td>
+
+                                            <td>
+                                                <%=a.onleave%>
+                                            </td>
+                                            <%}else{%>
+                                                <td>
+                                                    <%=a.date.toDateString()%>
+                                                </td>
+
+                                                <td>
+                                                    <%="Not Available"%>
+                                                </td>
+
+                                                <td>
+                                                    <%if(a.exit.time){%>
+                                                        <%="Not Available"%>
+                                                            <%}%>
+                                                </td>
+
+                                                <td>
+                                                    <%=a.onleave%>
+                                                </td>
+                                                <%}%>
+
+                                    </tr>
+                                    <%})%>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+            <%}else if(currentUser){%>
+                <div class="container">
+
+
+
+                    <div class='row'>
+
+                        <div class='col-sm-4'>
+
+                            <div> <strong class='lead' style="color:rgb(224, 224, 233)"> Hello,
+                                    <%=user.username.toUpperCase()%>
+                                </strong>
+                            </div>
+                            <br>
+                            <%if(user.isPresent===100){%>
+
+                                <div>
+                                    <form class='' action='/employees/<%=user.id%>/attendence' method='POST'>
+                                        <button class='btn btn-success' type="submit">Check IN</button>
+                                    </form>
+                                </div>
+                                <br>
+                                <div>
+                                    <form class='' action='/employees/<%=user.id%>/onleave' method='POST'>
+                                        <button class='btn btn-danger' type="submit">On leave</button>
+                                    </form>
+                                </div>
+
+                                <%}else{%>
+                                    <br>
+
+                                    <div>
+
+                                        <form class='' action='/employees/<%=user.id%>/checkOut' method='POST'>
+                                            <button class='btn btn-warning' type="submit">Check OUT</button>
+                                        </form>
+                                    </div>
+                                    <br>
+                                    <%}%>
+
+                        </div>
+                        <div class='col-sm-8'>
+                            <div class='row text-center'>
+                                <p style="color:rgb(224, 224, 233)"><b>Total work Hours :<%=time%> Hours</b></p>
+
+                                <table class='table table-bordered table-hover table-striped table-responsive '
+                                    style="background-color: #fafcfd;">
+                                    <thead>
+                                        <th>Date</th>
+                                        <th>Entry time</th>
+                                        <th>Exit time</th>
+                                        <th>On Leave</th>
+                                        <th>Status</th>
+
+
+                                    </thead>
+                                    <tbody>
+                                        <%user.attendance.forEach(a=>{%>
+                                            <tr>
+                                                <%if(!a.onleave){%>
+                                                    <td>
+                                                        <%=a.date.toDateString()%>
+                                                    </td>
+
+                                                    <td>
+                                                        <%=a.entry.toLocaleTimeString()%>
+                                                    </td>
+
+                                                    <td>
+                                                        <%if(a.exit.time){%>
+                                                            <%=a.exit.time.toLocaleTimeString()%>
+                                                                <%}%>
+                                                    </td>
+
+                                                    <td>
+                                                        <%=a.onleave%>
+                                                    </td>
+                                                    <td>
+                                                        <%=a.status%>
+                                                    </td>
+                                                    <%}else{%>
+                                                        <td>
+                                                            <%=a.date.toDateString()%>
+                                                        </td>
+
+                                                        <td>
+                                                            <%="Not Available"%>
+                                                        </td>
+
+                                                        <td>
+                                                            <%if(a.exit.time){%>
+                                                                <%="Not Available"%>
+                                                                    <%}%>
+                                                        </td>
+
+                                                        <td>
+                                                            <%=a.onleave%>
+                                                        </td>
+                                                        <td>
+                                                            <%=a.status%>
+                                                        </td>
+                                                        <%}%>
+
+                                            </tr>
+                                            <%})%>
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <%}else{%>
+                        <div class="conatiner text-center">
+                            <h1>First Login</h1>
+                            <a class="btn btn-info btn-lg" href="/login">Login</a>
+                        </div>
+                        <%}%>
+
+                            <script>
+                                function abc() {
+                                    console.log("Clicked");
+                                }
+
+                            </script>

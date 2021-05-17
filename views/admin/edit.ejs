@@ -1,0 +1,70 @@
+<% layout('layouts/mainpage') %>
+    <!--we are using it as partials of boilerplate from layouts-->
+
+
+    <div class="row">
+        <h1 class="text-center" style="color:rgb(224, 224, 233)">Edit Employee Details</h1>
+        <div class="col-md-6 offset-md-3">
+
+            <!--offset-3 will help us to move our context to the center of the page-->
+            <form action="/admins/<%=user._id%>" method="POST" novalidate class="validated-form">
+                <div class="mb-3">
+                    <!--used to provide margin botton of 3 to title-->
+                    <label class="form-label" for="username" style="color:rgb(224, 224, 233)">Username</label>
+                    <input class="form-control" type="text" id="username" name="user[username]"
+                        value="<%=user.username%>" required>
+                    <div class="valid-feedback">Looks Good</div>
+                </div>
+                <div class="mb-3">
+                    <!--used to provide margin botton of 3 to location-->
+                    <label class="form-label" for="email" style="color:rgb(224, 224, 233)">Email</label>
+                    <input class="form-control" type="email" id="email" name="user[email]" value="<%=user.email%>"
+                        required>
+                    <div class="valid-feedback">Looks Good</div>
+                </div>
+
+                <div class=" mb-3">
+                    <!--used to provide margin botton of 3 to price block and we span here for including $ before input price-->
+                    <label class="form-label" for="eid" style="color:rgb(224, 224, 233)">E_Id</label>
+                    <input type="number" id="eid" class="form-control" name="user[eid]" value="<%=user.eid%>" required>
+                    <div class="valid-feedback">Looks Good</div>
+                </div>
+
+                <div class="mb-3">
+                    <!--used to provide margin botton of 3 to description and instead of input we used text-area-->
+                    <label class="form-label" for="designation" style="color:rgb(224, 224, 233)">Designation</label>
+                    <input class="form-control" type="text" id="designation" name="user[designation]"
+                        value="<%=user.designation%>" required>
+                    <div class="valid-feedback">Looks Good</div>
+                </div>
+                <div class="mb-3">
+                    <!--used to provide margin botton of 3 to description and instead of input we used text-area-->
+                    <label class="form-label" for="contactNumber" style="color:rgb(224, 224, 233)">Contact
+                        Number</label>
+                    <input class="form-control" type="number" id="contactNumber" name="user[contactNumber]"
+                        value="<%=user.contactNumber%>" required>
+                    <div class="valid-feedback">Looks Good</div>
+                </div>
+
+                <div class="mb-3">
+                    <!--used to provide margin botton of 3 to description and instead of input we used text-area-->
+                    <label class="form-label" for="address" style="color:rgb(224, 224, 233)">Address</label>
+                    <input class="form-control" type="text" id="address" name="user[address]" value="<%=user.address%>"
+                        required>
+                    <div class="valid-feedback">Looks Good</div>
+                </div>
+                <div class="mb-3">
+                    <!--used to provide margin botton of 3 to description and instead of input we used text-area-->
+                    <label class="form-label" for="city" style="color:rgb(224, 224, 233)">City</label>
+                    <input class="form-control" type="text" id="city" name="user[city]" value="<%=user.city%>" required>
+                    <div class="valid-feedback">Looks Good</div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-danger ">Update Employee Details</button>
+                </div>
+            </form>
+            <div>
+                <a href="/admins/list" class="btn btn-primary mb-3">Back to All Employee Details</a>
+            </div>
+
+        </div>

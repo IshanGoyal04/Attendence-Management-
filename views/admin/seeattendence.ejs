@@ -1,0 +1,145 @@
+<% layout('layouts/mainpage') %>
+    <div class="container ">
+
+
+
+        <div class='row justify-content-center'>
+
+
+
+            <div class='col-sm-8'>
+                <div class="text-center"> <strong class='lead' style="color:rgb(224, 224, 233)"> Attendence of, <b>
+                            <%=user.username.toUpperCase()%>
+                        </b></strong>
+                </div>
+                <br>
+                <div class='row text-center'>
+                    <p style="color:rgb(224, 224, 233)"><b>Today's Working Hours : <%=time%> Hours</b></p>
+
+                    <table class='table table-bordered table-hover table-striped table-responsives'
+                        style="background-color: #fafcfd;">
+                        <thead>
+                            <th>Date</th>
+                            <th>Entry time</th>
+                            <th>Exit time</th>
+                            <th>On Leave</th>
+                            <th>Status</th>
+                            <th>Update Status</th>
+
+
+                        </thead>
+                        <tbody>
+                            <%user.attendance.forEach(a=>{%>
+                                <tr>
+                                    <%if(!a.onleave){%>
+                                        <td>
+                                            <%=a.date.toDateString()%>
+                                        </td>
+
+                                        <td>
+                                            <%=a.entry.toLocaleTimeString()%>
+                                        </td>
+
+                                        <td>
+                                            <%if(a.exit.time){%>
+                                                <%=a.exit.time.toLocaleTimeString()%>
+                                                    <%}%>
+                                        </td>
+
+                                        <td>
+                                            <%=a.onleave%>
+                                        </td>
+                                        <td>
+                                            <%=a.status%>
+                                        </td>
+                                        <td>
+
+                                            <ul>
+
+
+                                                <a class="dropdown-toggle active btn btn-warning" href="#" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Pending
+                                                </a>
+                                                <div class="dropdown-menu">
+                                                    <% if(a.status==="Pending" ) {%>
+
+                                                        <form class="dropdown-item"
+                                                            action="/admins/<%=user._id%>/approved/<%=a._id%>?_method=PUT"
+                                                            method="POST"><button
+                                                                class="btn btn-secondary">Approve</button>
+                                                        </form>
+                                                        <form class="dropdown-item"
+                                                            action="/admins/<%=user._id%>/rejected/<%=a._id%>?_method=PUT"
+                                                            method="POST"><button
+                                                                class="btn btn-secondary">Reject</button></form>
+
+                                                        <% } %>
+                                                </div>
+
+                                            </ul>
+                                        </td>
+
+
+                                        <%}else{%>
+                                            <td>
+                                                <%=a.date.toDateString()%>
+                                            </td>
+
+                                            <td>
+                                                <%="Not Available"%>
+                                            </td>
+
+                                            <td>
+                                                <%if(a.exit.time){%>
+                                                    <%="Not Available"%>
+                                                        <%}%>
+                                            </td>
+
+                                            <td>
+                                                <%=a.onleave%>
+                                            </td>
+                                            <td>
+                                                <%=a.status%>
+                                            </td>
+                                            <td>
+
+                                                <ul>
+
+                                                    <a class="dropdown-toggle active btn btn-warning" href="#"
+                                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        Pending
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                        <% if(a.status==="Pending" ) {%>
+
+                                                            <form class="dropdown-item"
+                                                                action="/admins/<%=user._id%>/approved/<%=a._id%>?_method=PUT"
+                                                                method="POST"><button
+                                                                    class="btn btn-secondary">Approve</button>
+                                                            </form>
+                                                            <form class="dropdown-item"
+                                                                action="/admins/<%=user._id%>/rejected/<%=a._id%>?_method=PUT"
+                                                                method="POST"><button
+                                                                    class="btn btn-secondary">Reject</button></form>
+
+                                                            <% } %>
+                                                    </div>
+
+                                                </ul>
+                                            </td>
+                                            <%}%>
+
+                                </tr>
+                                <%})%>
+
+                        </tbody>
+                    </table>
+                    <h4><a class="btn btn-danger text-center" href="/admins/list">Employees Collection Page</a></h4>
+
+                </div>
+            </div>
+
+
+        </div>

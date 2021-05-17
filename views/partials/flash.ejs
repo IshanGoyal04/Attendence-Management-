@@ -1,0 +1,21 @@
+<!--It will always show error alert even if we don't add any new campground so we apply (if) condition to check -->
+<% if(success && success.length) {%>
+    <!--success.length will check if our success array exist and does not contain anything -->
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= success %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <!--this button will help us remove the alert-->
+    </div>
+    <% } %>
+
+        <% if(error && error.length) {%>
+            <!--error.length will check if our error array exist and does not contain anything  -->
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <%= error %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">&times;</span></button>
+                    <!--this button will help us remove the alert-->
+            </div>
+            <%}%>
