@@ -214,5 +214,17 @@ const updateRecord = async function (req, res) {
     res.redirect(`/employees/${user._id}`)
 }
 
+//module.exports.changePassword = async (req, res) => {
+//    const { id } = req.params;
+//    const user = await User.findById(id)
+//    if (!user) {
+//        req.flash('error', 'Cannot find Employee')
+//        return res.redirect('/login');
+//    }
+//    res.render('employees/chpassword', { user });
+//}
+//
+//module.exports.setPassword = async (req, res) => {
 
+//}
 

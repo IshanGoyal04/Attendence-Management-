@@ -61,20 +61,24 @@
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Pending
                                                 </a>
-                                                <div class="dropdown-menu">
+                                                <div class="dropdown-menu" style=" background-color: #b9b1b1;">
                                                     <% if(a.status==="Pending" ) {%>
 
                                                         <form class="dropdown-item"
                                                             action="/admins/<%=user._id%>/approved/<%=a._id%>?_method=PUT"
-                                                            method="POST"><button
-                                                                class="btn btn-secondary">Approve</button>
+                                                            method="POST"><button class="btn btn-info">Approve</button>
                                                         </form>
                                                         <form class="dropdown-item"
                                                             action="/admins/<%=user._id%>/rejected/<%=a._id%>?_method=PUT"
-                                                            method="POST"><button
-                                                                class="btn btn-secondary">Reject</button></form>
+                                                            method="POST"><button class="btn btn-info">Reject</button>
+                                                        </form>
 
-                                                        <% } %>
+
+                                                        <% } else {%>
+
+                                                            <P><b>You can't change status once updated</b></P>
+
+                                                            <%}%>
                                                 </div>
 
                                             </ul>
@@ -111,20 +115,22 @@
                                                         aria-expanded="false">
                                                         Pending
                                                     </a>
-                                                    <div class="dropdown-menu">
+                                                    <div class="dropdown-menu" style=" background-color: #b9b1b1;">
                                                         <% if(a.status==="Pending" ) {%>
 
                                                             <form class="dropdown-item"
                                                                 action="/admins/<%=user._id%>/approved/<%=a._id%>?_method=PUT"
                                                                 method="POST"><button
-                                                                    class="btn btn-secondary">Approve</button>
+                                                                    class="btn btn-info">Approve</button>
                                                             </form>
                                                             <form class="dropdown-item"
                                                                 action="/admins/<%=user._id%>/rejected/<%=a._id%>?_method=PUT"
                                                                 method="POST"><button
-                                                                    class="btn btn-secondary">Reject</button></form>
+                                                                    class="btn btn-info">Reject</button></form>
 
-                                                            <% } %>
+                                                            <% } else {%>
+                                                                <P><b>You can't change status once updated</b></P>
+                                                                <%}%>
                                                     </div>
 
                                                 </ul>
