@@ -10,6 +10,7 @@ router.route('/:id')
     .post(isLoggedIn, catchAsync(employees.editProfile))
 
 
+
 router.route('/:id/attendence')
     .post(catchAsync(employees.markCkeckIn))
     .get(isLoggedIn, catchAsync(employees.renderCheckout))
@@ -23,6 +24,11 @@ router.route('/:id/checkOut')
 
 router.route('/:id/profile')
     .get(isLoggedIn, catchAsync(employees.viewProfile))
+
+router.route('/:id/changepassword')
+    .get(isLoggedIn, catchAsync(employees.changePasswrd))
+router.route('/:id/cp')
+    .post(isLoggedIn, catchAsync(employees.setPassword))
 
 
 

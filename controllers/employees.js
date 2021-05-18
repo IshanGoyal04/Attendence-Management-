@@ -214,17 +214,27 @@ const updateRecord = async function (req, res) {
     res.redirect(`/employees/${user._id}`)
 }
 
-//module.exports.changePassword = async (req, res) => {
-//    const { id } = req.params;
-//    const user = await User.findById(id)
-//    if (!user) {
-//        req.flash('error', 'Cannot find Employee')
-//        return res.redirect('/login');
-//    }
-//    res.render('employees/chpassword', { user });
-//}
-//
-//module.exports.setPassword = async (req, res) => {
+module.exports.changePasswrd = async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(id)
+    if (!user) {
+        req.flash('error', 'Cannot find Employee')
+        return res.redirect('/login');
+    }
+    res.render('employees/chpassword', { user });
+}
 
-//}
+module.exports.setPassword = async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(id, { ...req.body.user })
+    user.changePassword(req.body.oldpassword, req.body.newpassword, function (e) { //predefined function in passport-local-mongoose
+        if (e) {
+            req.flash('error', 'e.message')
+            res.redirect(`/employees/${user._id}`)
+        }
+    })
+    await user.save();
+    req.flash('success', 'Password Changed Successfully')
+    res.redirect(`/employees/${user._id}`)
+}
 
