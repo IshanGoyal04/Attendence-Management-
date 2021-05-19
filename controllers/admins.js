@@ -78,44 +78,46 @@ module.exports.renderEmployeeAttendence = async (req, res) => {
 
     try {
         const user = await User.findById(req.params.id);
-        let hours = 0;
-        let time = 0;
-        if (user.attendance.length > 0) {
-            user.attendance.reverse();
+        res.render('admin/seeattendence', { user })
+        //let hours = 0;
+        //let time = 0;
+        // if (user.attendance.length > 0) {
+        //     user.attendance.reverse();
+        //
+        //     user.attendance.map(a => {
+        //         //var today = new Date();
+        //         //var date1;
+        //         //  if (today.getMonth() + 1 < 10) {
+        //         //      date1 = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate();
+        //         //  }
+        //         //  else {
+        //         //      date1 = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        //         //  }
+        //         //  console.log(date1);
+        //         //const d = a.date.toISOString().slice(0, 10);
+        //
+        //         //if (d === date1) {
+        //         // console.log(d)
+        //         //console.log(date1)
+        //
+        //
+        //         if (a.entry && a.exit.time) {
+        //             hours = hours + calculateHours(a.entry.getTime(), a.exit.time.getTime());
+        //             // console.log(a.entry.toString())
+        //
+        //
+        //         }
+        //         // }
+        //
+        //     })
+        //     hours = parseFloat(hours / (3600 * 1000)).toFixed(4);
+        //     const f = parseInt(hours);
+        //     const s = parseInt((hours - f) * 60);
+        //     const t = parseInt(((hours - f) * 60 - s) * 60);
+        //console.log(f, s, t)
+        // time = f + ':' + s + ':' + t;
+        // }
 
-            user.attendance.map(a => {
-                var today = new Date();
-                var date1;
-                if (today.getMonth() + 1 < 10) {
-                    date1 = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate();
-                }
-                else {
-                    date1 = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-                }
-                //  console.log(date1);
-                const d = a.date.toISOString().slice(0, 10);
-
-                if (d === date1) {
-                    // console.log(d)
-                    //console.log(date1)
-
-
-                    if (a.entry && a.exit.time) {
-                        hours = hours + calculateHours(a.entry.getTime(), a.exit.time.getTime());
-                        // console.log(a.entry.toString())
-                    }
-                }
-
-            })
-            hours = parseFloat(hours / (3600 * 1000)).toFixed(4);
-            const f = parseInt(hours);
-            const s = parseInt((hours - f) * 60);
-            const t = parseInt(((hours - f) * 60 - s) * 60);
-            //console.log(f, s, t)
-            time = f + ':' + s + ':' + t;
-        }
-
-        res.render('admin/seeattendence', { user, time })
     } catch (error) {
         console.log(error);
         req.flash('error', 'Cannot find user');

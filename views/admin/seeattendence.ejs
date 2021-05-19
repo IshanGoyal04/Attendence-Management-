@@ -14,7 +14,7 @@
                 </div>
                 <br>
                 <div class='row text-center'>
-                    <p style="color:rgb(224, 224, 233)"><b>Today's Working Hours : <%=time%> Hours</b></p>
+
 
                     <table class='table table-bordered table-hover table-striped table-responsives'
                         style="background-color: #fafcfd;">
@@ -24,6 +24,7 @@
                             <th>Exit time</th>
                             <th>On Leave</th>
                             <th>Status</th>
+                            <th>Total Time</th>
                             <th>Update Status</th>
 
 
@@ -51,6 +52,17 @@
                                         </td>
                                         <td>
                                             <%=a.status%>
+                                        </td>
+                                        <td>
+                                            <%if(a.entry&&a.exit.time){%>
+                                                <%totalt=a.exit.time-a.entry%>
+                                                    <%totalt=parseFloat(totalt / (3600 * 1000)).toFixed(4);%>
+                                                        <%let f=parseInt(totalt);%>
+                                                            <%let s=parseInt((totalt - f) * 60);%>
+                                                                <%let t=parseInt(((totalt - f) * 60 - s) * 60);%>
+                                                                    <%=a.totaltime=f + ':' + s + ':' + t;%>
+                                                                        <% } %>
+
                                         </td>
                                         <td>
 
@@ -105,6 +117,9 @@
                                             </td>
                                             <td>
                                                 <%=a.status%>
+                                            </td>
+                                            <td>
+                                                <%="Not Available"%>
                                             </td>
                                             <td>
 

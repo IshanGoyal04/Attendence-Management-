@@ -43,7 +43,9 @@
                             <div>
 
                                 <form class='' action='/employees/<%=user.id%>/checkOut' method='POST'>
-                                    <button class='btn btn-warning' type="submit">Check OUT</button>
+                                    <button class='btn btn-warning' type="submit"
+                                        onclick=" return confirm('If once checked-out you cannot checkin today!!');">Check
+                                        OUT</button>
                                 </form>
                             </div>
                             <br>
@@ -56,7 +58,7 @@
                     <div class='row text-center'>
                         <p style="color:rgb(224, 224, 233)"><b>Today's working hours :<%=time%> Hours</b></p>
 
-                        <table class='table table-bordered table-hover table-striped table-responsive '
+                        <table id="myTable" class='table table-bordered table-hover table-striped table-responsive'
                             style="background-color: #fafcfd;">
                             <thead>
                                 <th>Date</th>
@@ -155,7 +157,9 @@
                                     <div>
 
                                         <form class='' action='/employees/<%=user.id%>/checkOut' method='POST'>
-                                            <button class='btn btn-warning' type="submit">Check OUT</button>
+                                            <button class='btn btn-warning' type="submit"
+                                                onclick=" return confirm('If once checked-out you cannot checkin today!!');">Check
+                                                OUT</button>
                                         </form>
                                     </div>
                                     <br>

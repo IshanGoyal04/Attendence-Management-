@@ -57,6 +57,10 @@ const userSchema = new Schema({
             type: String,
             enum: ['Pending', 'Approved', 'Rejected'],
             default: "Pending"
+        },
+        totaltime: {
+            type: Date,
+            default: 0
         }
 
 
